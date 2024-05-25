@@ -75,7 +75,7 @@ export const MobileMenuButton = () => {
       <motion.div
         variants={{
           closed: { height: 0 },
-          open: { height: "calc(100vh - 100px)" },
+          open: { height: "calc(100dvh - 100px)" },
         }}
         initial="closed"
         animate={animate}
