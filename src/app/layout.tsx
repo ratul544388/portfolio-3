@@ -1,3 +1,12 @@
+import { BackgroundLight } from "@/components/background-light";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { MinimizedSocialCard } from "@/components/minimized-social-card";
+import { Toaster } from "@/components/ui/sonner";
+import { cn } from "@/lib/utils";
+import { ModalProvider } from "@/providers/modal-provider";
+import { SmoothScrollProvider } from "@/providers/smooth-scroll-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -16,7 +25,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn('p-2.5 overflow-hidden', inter.className)}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          <Footer />
+          <ModalProvider />
+          <BackgroundLight />
+          <MinimizedSocialCard />
+          <Toaster />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
