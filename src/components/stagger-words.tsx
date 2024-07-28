@@ -21,18 +21,6 @@ export const StaggerWords = ({
 }: StaggerWords) => {
   const Elem = variant as keyof JSX.IntrinsicElements;
 
-  const staggerVariants = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  };
-
   return (
     <Elem
       aria-label={children}
